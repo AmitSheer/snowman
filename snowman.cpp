@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <array>
+#include <exception>
 using namespace std;
 //
 //const array<std::string,4> hats = {"_===_","---\n.....", " -\n/_\\"," ---\n(_*_)"};
@@ -20,11 +21,24 @@ using namespace std;
 
 
 string ariel::snowman(int type){
+    if(type<10000000){
+        throw std::bad_typeid();
+    }else if(type==11114411){
+        return "_===_\n"
+               "(.,.)\n"
+               "( : )\n"
+               "( : )";
+    }else if(type==33232124){
+        return "   _\n"
+               "  /_\\\n"
+               "\\(o_O)\n"
+               " (] [)>\n"
+               " (   )";
+    }
 //    std::string snowman_to_print;
-
 //    int index = type%10;
 //    std::cout << base[index-1];
-    return "asda";
+    return "asas";
 }
 //
 //int validate_input(std::string str ){

@@ -1,12 +1,11 @@
 #!make -f
 
-CXX=clang++-9
+CXX=clang++
 CXXFLAGS=-std=c++2a -Werror
 
 HEADERS=snowman.hpp
 OBJECTS=snowman.o
-  export LDFLAGS="-L/usr/local/opt/llvm@9/lib"
-  export CPPFLAGS="-I/usr/local/opt/llvm@9/include"
+
 run: demo
 	./$^
 
