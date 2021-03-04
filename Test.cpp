@@ -23,13 +23,16 @@ TEST_CASE("Good snowman code") {
     CHECK(snowman(11111111)==string("_===_\n(.,.)\n<( : )>\n( : )"));
     CHECK(snowman(22222222)==string("---\n.....\n(o.o)\n\\(] [)/\n(\" \")"));
     CHECK(snowman(44444444)==string(" ---\n(_*_)\n(- -)\n(   )\n(   )"));
-
     /* Add more checks here */
 }
 
 TEST_CASE("Bad snowman code") {
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(1));
+    CHECK_THROWS(snowman(12341234));
+    CHECK_THROWS(snowman(33333333));
+//    ==string("_===_\n(O.-)\n<(> <)/\n(   )"));
+    /* Add more checks here */
+}
+TEST_CASE("Snowman input invalid numbers"){
     CHECK_THROWS(snowman(1111111));
     CHECK_THROWS(snowman(11111115));
     CHECK_THROWS(snowman(11111151));
@@ -40,11 +43,12 @@ TEST_CASE("Bad snowman code") {
     CHECK_THROWS(snowman(15111111));
     CHECK_THROWS(snowman(51111111));
     CHECK_THROWS(snowman(11111181));
-    CHECK_THROWS(snowman(12341234));
-    CHECK_THROWS(snowman(33333333));
-//    ==string("_===_\n(O.-)\n<(> <)/\n(   )"));
-    /* Add more checks here */
 }
-
-
+TEST_CASE("Input invalid input too long"){
+    CHECK_THROWS(snowman(1111111111));
+}
+TEST_CASE("Input invalid input too short"){
+    CHECK_THROWS(snowman(555));
+    CHECK_THROWS(snowman(1));
+}
 /* Add more test cases here */
