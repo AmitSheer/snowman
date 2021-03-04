@@ -14,7 +14,7 @@
             <option value="$PROJECT_DIR$" />
           </set>
         </option>
-        <option name="switches" value="--just-print --print-directory --keep-going" />
+        <option name="switches" value="--just-print --print-directory --keep-going --debug" />
       </MakefileProjectSettings>
     </option>
   </component>

@@ -1,12 +1,14 @@
 #!make -f
 
-CXX=clang++
+CXX=clang++-9
 CXXFLAGS=-std=c++2a -Werror
 
 HEADERS=snowman.hpp
 OBJECTS=snowman.o
-
-all: snowman
+  export LDFLAGS="-L/usr/local/opt/llvm@9/lib"
+  export CPPFLAGS="-I/usr/local/opt/llvm@9/include"
+run: demo
+	./$^
 
 demo: Demo.o $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o demo
@@ -23,9 +25,6 @@ tidy:
 Test2.cpp:
 	curl https://raw.githubusercontent.com/cpp-exercises/snowman-a/master/TestExample.cpp > Test2.cpp
 
-snowman: snowman.cpp snowman.hpp
-	$(CXX) $(CXXFLAGS) snowman.cpp -o snowman
-
 clean:
-	rm -f *.o demo test snowman
+	rm -f *.o demo test
 	rm -f Test2.cpp
