@@ -18,17 +18,22 @@ using namespace std;
 //const array<std::string,4> torso = {" : ", "] [","> <", "   "};
 //const array<std::string,4> base = {" : ", "\" \"", "___","   "};
 
+const int snowman1=11114411;
+const int snowman2=33232124;
+const int INPUT_SIZE_CHECK=10000000;
 
 
 string ariel::snowman(int type){
-    if(type<10000000){
+    if(type<INPUT_SIZE_CHECK){
         throw std::bad_typeid();
-    }else if(type==11114411){
+    }
+    if(type==snowman1){
         return "_===_\n"
                "(.,.)\n"
                "( : )\n"
                "( : )";
-    }else if(type==33232124){
+    }
+    if(type== snowman2){
         return "   _\n"
                "  /_\\\n"
                "\\(o_O)\n"
