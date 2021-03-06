@@ -4,7 +4,7 @@
  * 
  * IMPORTANT: Please write more tests - the tests here are only for example and are not complete.
  *
- * AUTHORS: <Please write your names here>
+ * AUTHORS: Amit-Sheer Cohen
  * 
  * Date: 2021-02
  */
@@ -18,18 +18,20 @@ using namespace std;
 
 //hat,nose,left eye, right eye,leftarm, rightarm, torso, base
 TEST_CASE("Good snowman code") {
-    CHECK(snowman(11114411) == string("_===_\n(.,.)\n( : )\n( : )"));
+    CHECK(snowman(11114411)==string("_===_\n(.,.)\n( : )\n( : )"));
     CHECK(snowman(12344434)==string("_===_\n(O.-)\n(> <)\n(   )"));
     CHECK(snowman(11111111)==string("_===_\n(.,.)\n<( : )>\n( : )"));
     CHECK(snowman(22222222)==string("---\n.....\n(o.o)\n\\(] [)/\n(\" \")"));
     CHECK(snowman(44444444)==string(" ---\n(_*_)\n(- -)\n(   )\n(   )"));
+    CHECK(snowman(33333333)==string(" -\n/_\\\n(O_O)\n/(> <)\\\n(___)"));
+    CHECK(snowman(12341234)==string("_===_\n(O.-)\n<(> <)/\n(   )"));
+
     /* Add more checks here */
 }
 
 TEST_CASE("Bad snowman code") {
-    CHECK_THROWS(snowman(12341234));
-    CHECK_THROWS(snowman(33333333));
-//    ==string("_===_\n(O.-)\n<(> <)/\n(   )"));
+    
+//    
     /* Add more checks here */
 }
 TEST_CASE("Snowman input invalid numbers"){
