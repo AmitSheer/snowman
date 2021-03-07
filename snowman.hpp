@@ -7,7 +7,6 @@
 
 namespace ariel{
     std::string snowman(int type);
-
 }
 
 

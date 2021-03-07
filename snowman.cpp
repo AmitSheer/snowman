@@ -8,22 +8,11 @@
 #include <array>
 #include <exception>
 using namespace std;
-#define NUM_NUMBER 8
-#define HAT 0
-#define NOSE 1
-#define LEFT_EYE 2
-#define RIGHT_EYE 3
-#define LEFT_ARM 4
-#define RIGHT_ARM 5
-#define TORSO 6
-#define BASE 7
-#define MAX_SIZE 44444444
-#define MIN_SIZE 11111111
+const int NUM_NUMBER = 8, HAT=0, NOSE=1,LEFT_EYE=2,RIGHT_EYE=3,LEFT_ARM=4,RIGHT_ARM=5,TORSO=6,BASE= 7,MAX_SIZE=44444444,MIN_SIZE=11111111;
 
 const array<std::string,4> hats = {"_===_"," ---\n .....", "  -\n  /_\\"," ---\n (_*_)"};
 const array<std::string,4> noses = {",",".","_"," "};
-const array<std::string,4> left_eyes = {".","o","O","-"};
-const array<std::string,4> right_eyes = {".","o","O","-"};
+const array<std::string,4> eyes = {".","o","O","-"};
 const array<std::string,4> left_arm_tops = {" ","\\"," "," "};
 const array<std::string,4> left_arms = {"<"," ","/"," "};
 const array<std::string,4> right_arm_tops = {" ","/"," "," "};
@@ -33,7 +22,7 @@ const array<std::string,4> bases = {" : ", "\" \"", "___","   "};
 
 
 std::string build_face(array<int,NUM_NUMBER> types){
-    std::string face = left_arm_tops[types[LEFT_ARM]]+"("+left_eyes[types[LEFT_EYE]]+noses[types[NOSE]]+right_eyes[types[RIGHT_EYE]]+")"+right_arm_tops[types[RIGHT_ARM]];
+    std::string face = left_arm_tops[types[LEFT_ARM]]+"("+eyes[types[LEFT_EYE]]+noses[types[NOSE]]+eyes[types[RIGHT_EYE]]+")"+right_arm_tops[types[RIGHT_ARM]];
     return face;
 }
 std::string build_body(array<int,NUM_NUMBER> types){
@@ -44,16 +33,22 @@ std::string build_base(int type){
     std::string lower_part = " ("+bases[type]+ ")";
     return lower_part;
 }
-//
-array<int,NUM_NUMBER> validate_input(int type){
+
+void validate_input(int type){
     if(type<MIN_SIZE || type>MAX_SIZE){
         throw std::out_of_range("size is out of range");
     }
-    array<int,NUM_NUMBER> types;
     for (int i = 8; i > 0; --i) {
         if(type%10<1||type%10>4){
             throw std::out_of_range("value out of range");
         }
+        type = type/10;
+    }
+}
+
+array<int,NUM_NUMBER> split_input(int type){
+    array<int,NUM_NUMBER> types = {};
+    for (int i = NUM_NUMBER; i > 0; --i) {
         types[i-1] = type%10-1;
         type = type/10;
     }
@@ -74,7 +69,8 @@ std::string build_snowman(array<int,NUM_NUMBER> types){
 
 string ariel::snowman(int type){
     //validates the inputed data and returns it
-    array<int,NUM_NUMBER> types = validate_input(type);
+    validate_input(type);
+    array<int,NUM_NUMBER> types = split_input(type);
     //builds the string for he snowman
     return build_snowman(types);
 }
