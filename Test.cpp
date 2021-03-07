@@ -29,11 +29,6 @@ TEST_CASE("Good snowman code") {
     /* Add more checks here */
 }
 
-TEST_CASE("Bad snowman code") {
-    
-//    
-    /* Add more checks here */
-}
 TEST_CASE("Snowman input invalid numbers"){
     CHECK_THROWS(snowman(1111111));
     CHECK_THROWS(snowman(11111115));
