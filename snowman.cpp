@@ -9,7 +9,7 @@
 #include <exception>
 using namespace std;
 //
-const array<std::string,4> hats = {"_===_"," ---\n .....", " -\n /_\\"," ---\n (_*_)"};
+const array<std::string,4> hats = {"_===_"," ---\n .....", "  -\n  /_\\"," ---\n (_*_)"};
 const array<std::string,4> noses = {",",".","_"," "};
 const array<std::string,4> left_eyes = {".","o","O","-"};
 const array<std::string,4> right_eyes = {".","o","O","-"};
