@@ -16,6 +16,8 @@ using namespace ariel;
 #include <string>
 #include <array>
 #include <exception>
+#include <iostream>
+#include <math.h>
 using namespace std;
 const array<std::string,4> hats = {"_===_"," ---\n .....", "  -\n  /_\\"," ---\n (_*_)"};
 const array<std::string,4> noses = {",",".","_"," "};
@@ -70,23 +72,41 @@ TEST_CASE("Good snowman code") {
 }
 
 TEST_CASE("Snowman input invalid numbers"){
-    CHECK_THROWS(snowman(1111111));
-    CHECK_THROWS(snowman(11111115));
-    CHECK_THROWS(snowman(11111151));
-    CHECK_THROWS(snowman(11111511));
-    CHECK_THROWS(snowman(11115111));
-    CHECK_THROWS(snowman(11151111));
-    CHECK_THROWS(snowman(11511111));
-    CHECK_THROWS(snowman(15111111));
-    CHECK_THROWS(snowman(51111111));
-    CHECK_THROWS(snowman(11111181));
+    int type = 11111111;
+    for (int i = 4; i < 10; ++i) {
+        for (int j = 0; j < 8; ++j) {
+            CHECK_THROWS(snowman(type+i*pow(10,j)));
+        }
+    }
+    for (int i = 1; i < 9; ++i) {
+        type = -11111111;
+        CHECK_THROWS(snowman(type*i));
+    }
 }
 TEST_CASE("Input invalid input too long"){
-    CHECK_THROWS(snowman(1111111111));
+    for (int i = 1; i < 10; ++i) {
+        int type = 1111111111;
+        CHECK_THROWS(snowman(type*i));
+    }
 }
-TEST_CASE("Input invalid input too short"){
-    CHECK_THROWS(snowman(555));
-    CHECK_THROWS(snowman(1));
+TEST_CASE("Input invalid input too short and invalid numbers"){
+    for (int i = 5; i < 9; ++i) {
+        int value = 0;
+        for (int j = 0; j < 7; ++j) {
+            value = value*10+i;
+            CHECK_THROWS(snowman(value));
+        }
+    }
+    CHECK_THROWS(snowman(00000000));
+}
+TEST_CASE("Input invalid input too short and valid numbers"){
+    for (int i = 1; i < 5; ++i) {
+        int value = 0;
+        for (int j = 0; j < 7; ++j) {
+            value = value*10+i;
+            CHECK_THROWS(snowman(value));
+        }
+    }
 }
 
 
