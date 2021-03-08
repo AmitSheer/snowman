@@ -8,7 +8,7 @@
 #include <array>
 #include <exception>
 using namespace std;
-const int NUM_NUMBER = 8, HAT=0, NOSE=1,LEFT_EYE=2,RIGHT_EYE=3,LEFT_ARM=4,RIGHT_ARM=5,TORSO=6,BASE= 7,MAX_SIZE=44444444,MIN_SIZE=11111111;
+const int NUM_NUMBER = 8, HAT=0, NOSE=1,LEFT_EYE=2,RIGHT_EYE=3,LEFT_ARM=4,RIGHT_ARM=5,TORSO=6,BASE= 7,MAX_SIZE=44444444,MIN_SIZE=11111111, NUMBER_TEN=10;
 
 const array<std::string,4> hats = {"_===_"," ---\n .....", "  -\n  /_\\"," ---\n (_*_)"};
 const array<std::string,4> noses = {",",".","_"," "};
@@ -38,19 +38,19 @@ void validate_input(int type){
     if(type<MIN_SIZE || type>MAX_SIZE){
         throw std::out_of_range("size is out of range");
     }
-    for (int i = 8; i > 0; --i) {
-        if(type%10<1||type%10>4){
+    for (int i = NUM_NUMBER; i > 0; --i) {
+        if(type%NUMBER_TEN<1||type%NUMBER_TEN>4){
             throw std::out_of_range("value out of range");
         }
-        type = type/10;
+        type = type/NUMBER_TEN;
     }
 }
 
 array<int,NUM_NUMBER> split_input(int type){
     array<int,NUM_NUMBER> types = {};
     for (int i = NUM_NUMBER; i > 0; --i) {
-        types[i-1] = type%10-1;
-        type = type/10;
+        types[i-1] = type%NUMBER_TEN-1;
+        type = type/NUMBER_TEN;
     }
     return types;
 }
