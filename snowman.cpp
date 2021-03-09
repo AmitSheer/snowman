@@ -64,7 +64,7 @@ std::string build_snowman(array<int,NUM_NUMBER> types){
     std::string hat = hats[(int)types[HAT]];
     //creates the string for the face
     std::string face = build_face(types);
-    return " "+hat+"\n"+face+"\n"+body+"\n"+base+" ";
+    return " "+hat+"\n"+face+"\n"+body+"\n"+base+"\n";
 }
 
 string ariel::snowman(int type){
